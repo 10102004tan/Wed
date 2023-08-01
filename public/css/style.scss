@@ -1,7 +1,7 @@
 *{
     box-sizing: border-box;
 }
-$btn--color : #e45050;
+$btn--color : #FF4C60;
 $secondary-color: #302F4E;
 $sizeIcon : 2rem;
 $margin-left-image : 3rem;
@@ -139,6 +139,11 @@ header {
 
     &__text {
         font-size: 1.6rem;
+
+        &--main {
+            display: inline-block;
+            animation: animationTextBanner 1.5s infinite ease;
+        }
     }
 
     &-list {
@@ -512,14 +517,13 @@ header {
         font-weight: 500;
         margin-left: 25px;
         transition: color 0.4s linear;
+        position: relative;
 
         &:first-child {
             color: $btn--color;
         }
 
-        // &:hover {
-        //     color:$btn--color;
-        // }
+
     }
 
     &-details {
@@ -530,7 +534,7 @@ header {
         margin-top: 1.5rem;
         
         &__icon {
-            // display: none;
+            display: inline-block;
             color: #fff;
             padding: 1.5rem;
             background-color: #ddd015;
@@ -539,8 +543,9 @@ header {
             position: absolute;
             bottom: 20px;
             left: 20px;
-            opacity: 0;
+            opacity: 1;
             transition: all 0.5s linear;
+            z-index: 7;
         }
 
         &__item {
@@ -551,15 +556,28 @@ header {
             margin-bottom: 3rem;
             transition: all 0.5s linear;
             position: relative;
-            z-index: 6;
 
-            &:after {
+            &:after{
+                content: "";
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                border-radius: inherit;
+                top: 0;
+                left: 0;
+                background-color: transparent;
+                transition: all 0.5s linear;
+                z-index: 7;
+
+            }
+
+            &:before {
                 content: "Project Managment lllustration";
                 color : #fff;
                 font-size: 2rem;
                 font-weight: 500;
                 position: absolute;
-                // z-index: 6;
+                z-index: 8;
                 top: 20%;
                 left: 10%;
                 transition: all 0.5s linear;
@@ -567,34 +585,15 @@ header {
                 overflow: hidden;
             }
 
-            &:before {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 7;
-                background-color: red;
+            &:hover:after{
+                background-color: rgba(62, 78, 226, 0.788);
 
-                &:hover {
-                    // background-color: rgba(82, 50, 197, 0.938);
-                }
             }
 
-            // &:hover {
-            //     & .recent-details__icon {
-            //         opacity: 1;
-            //     }
-            //     &:after {
-            //         opacity: 1;
-            //         transform: translateY(-10%);
-            //     }
-            // }
-
-
-
-            
-
+            &:hover:before{
+                animation: animation3 0.5s 1 linear;
+                opacity: 1;
+            }
             
         }
 
@@ -603,19 +602,129 @@ header {
             object-fit: cover;
             object-position: center;
             border-radius: inherit;
+            // overflow:hidden;
             transition: all 0.5s linear;
             position: relative;
-            z-index: 7;
-
-            &:hover {
-                opacity: 0.3;
-            }
+            z-index: 5;
         }
 
         
     }
 
+    &-box__btn{
+        text-align: center;
+    }
+
+    &__btn {
+        text-decoration: none;
+        color: #fff;
+        font-size: 1.6rem;
+        padding: 1.2rem 3.2rem;
+        font-weight: 500;
+        background-color: $btn--color;
+        border-radius: 1000px;
+        display: inline-block;
+        margin-top: 2.4rem;
+        &:hover {
+            animation: hoverButton 0.5s 1 linear;
+
+        }
+    }
+
    
+}
+
+
+// pricing
+.pricing {
+    padding-top: 11rem;
+    @include setHeading();
+
+    &__list {
+        display: flex;
+        justify-content: space-between;
+        // align-items: normal;
+        align-items: center;
+    }
+
+    &__item{
+        background-color: $secondary-color;
+        text-align: center;
+        padding: 3rem 4rem;
+        color : #fff;
+        font-size: 1.6rem;
+        border-radius: 20px;
+        position: relative;
+        // margin-left: 0.5rem;
+
+        &:not(:last-child,:first-child) {
+            padding: 5.5rem 4rem;
+        }
+
+        &:not(:last-child,:first-child):after {
+            content: "Recommended";
+            padding: 0.7rem 1.2rem;
+            background-color: #6C6CE5;
+            color: #fff;
+            font-weight: 500;
+            font-size: 1.4rem;
+            border-top-left-radius: 99px;
+            border-bottom-left-radius: 99px;
+            position: absolute;
+            top: 4.5rem;
+            left: 0;
+            transform: rotate(-90deg);
+        }
+
+    }
+
+    &__name {
+        font-size: 2.4rem;
+        font-weight: 500;
+        margin: 20px 0;
+    }
+
+    &__text ,&__support{
+        margin-bottom: 16px;
+    }
+
+    &-price {
+        display: flex;
+        align-items: start;
+        justify-content: center;
+
+        &__month {
+            align-self: end;
+            margin-left: 10px;
+        }
+
+        &__icon{
+            font-weight: 500;
+            transform: translateY(100%);
+            margin-right: 0.5rem;
+        }
+
+        &__numbers{
+            font-size: 3.6rem;
+            font-weight: 700;
+        }
+    }
+
+    &__btn{
+        text-decoration: none;
+        color: #fff;
+        font-size: 1.6rem;
+        padding: 1.2rem 3.2rem;
+        font-weight: 500;
+        background-color: $btn--color;
+        border-radius: 1000px;
+        display: inline-block;
+        margin-top: 2rem;
+        &:hover {
+            animation: hoverButton 0.5s 1 linear;
+
+        }
+    }
 }
 
 
@@ -628,6 +737,34 @@ header {
 
     100% {
         transform: scale(1);
+    }
+}
+
+@keyframes animationTextBanner {
+    0%{
+        // opacity: 0.2;
+        transform: scale(0.8);
+    }
+
+    20%{
+        // opacity: 1;
+        transform: scale(1.1);
+    }
+    25%{
+        transform: scaleX(0.9);
+    }
+    30%{
+        transform: translate(1);
+    }
+}
+
+@keyframes animation3{
+    0%{
+        transform: translateY(1.2rem);
+    }
+
+    100%{
+        transform: translateY(-1.2rem);
     }
 }
 
@@ -725,5 +862,52 @@ header {
         }
     }
 
+
+    .recent {
+
+        &-details{
+            &__item{
+            @include size(calc(100%/2 - $margin-left-image),22.4rem);
+            }
+        }
+    }
+
+
+    .pricing
+    {
+
+        &__list {
+            flex-direction: column;
+            justify-content: none;
+            align-items: normal;
+        }
+
+        &__item{
+            margin-bottom: 2.6rem;
+        }
+    }
+
     
+}
+
+@media screen and (max-width: 575px){
+
+    .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .recent {
+
+        &-details{
+            &__list{
+                margin-left: $margin-left-image;
+            }
+            &__item{
+            @include size(calc(100%),22.4rem);
+            }
+        }
+    }
 }
