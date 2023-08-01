@@ -93,6 +93,10 @@ header {
 .banner__text {
   font-size: 1.6rem;
 }
+.banner__text--main {
+  display: inline-block;
+  animation: animationTextBanner 1.5s infinite ease;
+}
 .banner-list {
   margin: 2.8rem 0;
 }
@@ -111,7 +115,7 @@ header {
   font-size: 1.6rem;
   padding: 1.2rem 3.2rem;
   font-weight: 500;
-  background-color: #e45050;
+  background-color: #FF4C60;
   border-radius: 99px;
 }
 .banner__btn:hover {
@@ -189,7 +193,7 @@ header {
   font-size: 1.6rem;
   padding: 1.2rem 3.2rem;
   color: #fff;
-  background-color: #e45050;
+  background-color: #FF4C60;
   border-radius: 99px;
   font-weight: 700;
 }
@@ -459,9 +463,10 @@ header {
   font-weight: 500;
   margin-left: 25px;
   transition: color 0.4s linear;
+  position: relative;
 }
 .recent__item:first-child {
-  color: #e45050;
+  color: #FF4C60;
 }
 .recent-details {
   display: flex;
@@ -471,6 +476,7 @@ header {
   margin-top: 1.5rem;
 }
 .recent-details__icon {
+  display: inline-block;
   color: #fff;
   padding: 1.5rem;
   background-color: #ddd015;
@@ -479,8 +485,9 @@ header {
   position: absolute;
   bottom: 20px;
   left: 20px;
-  opacity: 0;
+  opacity: 1;
   transition: all 0.5s linear;
+  z-index: 7;
 }
 .recent-details__item {
   border-radius: 20px;
@@ -491,28 +498,38 @@ header {
   margin-bottom: 3rem;
   transition: all 0.5s linear;
   position: relative;
-  z-index: 6;
 }
 .recent-details__item:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: inherit;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  transition: all 0.5s linear;
+  z-index: 7;
+}
+.recent-details__item:before {
   content: "Project Managment lllustration";
   color: #fff;
   font-size: 2rem;
   font-weight: 500;
   position: absolute;
+  z-index: 8;
   top: 20%;
   left: 10%;
   transition: all 0.5s linear;
   opacity: 0;
   overflow: hidden;
 }
-.recent-details__item:before {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 7;
-  background-color: red;
+.recent-details__item:hover:after {
+  background-color: rgba(62, 78, 226, 0.788);
+}
+.recent-details__item:hover:before {
+  animation: animation3 0.5s 1 linear;
+  opacity: 1;
 }
 .recent-details__image {
   width: 100%;
@@ -522,10 +539,120 @@ header {
   border-radius: inherit;
   transition: all 0.5s linear;
   position: relative;
-  z-index: 7;
+  z-index: 5;
 }
-.recent-details__image:hover {
-  opacity: 0.3;
+.recent-box__btn {
+  text-align: center;
+}
+.recent__btn {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.6rem;
+  padding: 1.2rem 3.2rem;
+  font-weight: 500;
+  background-color: #FF4C60;
+  border-radius: 1000px;
+  display: inline-block;
+  margin-top: 2.4rem;
+}
+.recent__btn:hover {
+  animation: hoverButton 0.5s 1 linear;
+}
+
+.pricing {
+  padding-top: 11rem;
+}
+.pricing__heading {
+  font-size: 3.6rem;
+  color: #fff;
+  font-weight: 700;
+  margin-left: 14px;
+  position: relative;
+  margin-bottom: 6rem;
+}
+.pricing__heading:after {
+  content: "";
+  width: 5rem;
+  height: 5rem;
+  background-image: url("https://jthemes.net/themes/html/bolby/demo/images/dots-bg-light.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+}
+.pricing__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pricing__item {
+  background-color: #302F4E;
+  text-align: center;
+  padding: 3rem 4rem;
+  color: #fff;
+  font-size: 1.6rem;
+  border-radius: 20px;
+  position: relative;
+}
+.pricing__item:not(:last-child, :first-child) {
+  padding: 5.5rem 4rem;
+}
+.pricing__item:not(:last-child, :first-child):after {
+  content: "Recommended";
+  padding: 0.7rem 1.2rem;
+  background-color: #6C6CE5;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.4rem;
+  border-top-left-radius: 99px;
+  border-bottom-left-radius: 99px;
+  position: absolute;
+  top: 4.5rem;
+  left: 0;
+  transform: rotate(-90deg);
+}
+.pricing__name {
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin: 20px 0;
+}
+.pricing__text, .pricing__support {
+  margin-bottom: 16px;
+}
+.pricing-price {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+.pricing-price__month {
+  align-self: end;
+  margin-left: 10px;
+}
+.pricing-price__icon {
+  font-weight: 500;
+  transform: translateY(100%);
+  margin-right: 0.5rem;
+}
+.pricing-price__numbers {
+  font-size: 3.6rem;
+  font-weight: 700;
+}
+.pricing__btn {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.6rem;
+  padding: 1.2rem 3.2rem;
+  font-weight: 500;
+  background-color: #FF4C60;
+  border-radius: 1000px;
+  display: inline-block;
+  margin-top: 2rem;
+}
+.pricing__btn:hover {
+  animation: hoverButton 0.5s 1 linear;
 }
 
 @keyframes hoverButton {
@@ -534,6 +661,28 @@ header {
   }
   100% {
     transform: scale(1);
+  }
+}
+@keyframes animationTextBanner {
+  0% {
+    transform: scale(0.8);
+  }
+  20% {
+    transform: scale(1.1);
+  }
+  25% {
+    transform: scaleX(0.9);
+  }
+  30% {
+    transform: translate(1);
+  }
+}
+@keyframes animation3 {
+  0% {
+    transform: translateY(1.2rem);
+  }
+  100% {
+    transform: translateY(-1.2rem);
   }
 }
 @media screen and (max-width: 1199px) {
@@ -602,6 +751,34 @@ header {
   }
   .experience__list {
     width: 100%;
+  }
+  .recent-details__item {
+    width: calc(50% - 3rem);
+    height: 22.4rem;
+  }
+  .pricing__list {
+    flex-direction: column;
+    justify-content: none;
+    align-items: normal;
+  }
+  .pricing__item {
+    margin-bottom: 2.6rem;
+  }
+}
+@media screen and (max-width: 575px) {
+  .container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .recent-details__list {
+    margin-left: 3rem;
+  }
+  .recent-details__item {
+    width: 100%;
+    height: 22.4rem;
   }
 }
 
